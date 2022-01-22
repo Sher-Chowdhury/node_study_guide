@@ -215,3 +215,9 @@ $ which standard
 ```
 
 In this case `standard --fix` is coammand you can run inside a node package repo to automatically fix all the linting issues. 
+
+
+## using "module.exports"
+
+see https://github.com/Sher-Chowdhury/node-exports-demo for examples on how module.exports works, to pull in javascript functions from withing the package itself. 
+
