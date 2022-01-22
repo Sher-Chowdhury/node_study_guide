@@ -14,7 +14,7 @@ javascript (nodejs) -> npm -> npmjs.com
 
 
 
-package (aka module): any folder that contains javascript code. 
+package (aka module): any folder (or file) that contains javascript code. 
 
 
 
@@ -220,4 +220,110 @@ In this case `standard --fix` is coammand you can run inside a node package repo
 ## using "module.exports"
 
 see https://github.com/Sher-Chowdhury/node-exports-demo for examples on how module.exports works, to pull in javascript functions from withing the package itself. 
+
+## using packages.json's script section and npx
+
+Let's say you have the following scripts entry:
+
+```
+...
+"scripts": {
+	"start": "node server.js",
+	"test": "mocha \"*/**/*Test.js\""
+}
+...
+```
+
+This gives a standardised way to perform various tasks against your app, so your team members can easily run them 
+locally too. These are run using `npm run`, e.g. to run "start", do:
+
+```
+$ npm run start
+```
+
+there are some special script names, that comes with handy short-hand aliases. "start" is one of those names, which can also be run using:
+
+```
+npm start
+```
+
+`test` is also another one that's a special name, that be executed using these shorthands:
+
+```
+npm test
+
+npm t
+```
+
+But in other cases, it's done by `npm run <script-name>`
+
+By default, these scripts will use any binaries installed locally in the node_module folder rather than any global binaries. 
+
+If you want run these script defined commands, directly, then you'll have to locate the relevant paths to binaries that are inside the the nodule_modules folder, alternatively you can just use the `npx` binary. 
+
+npx, like npm, is another binary that's installed as part of node. So to run the above test script, can just do:
+
+```
+$ npx mocha \"*/**/*Test.js\"
+```
+
+npx then looks inside the node_module folder and find the mocha binary automatically and then uses it. 
+
+if you don't want to use npx, and don't want to use binaries inside the node_modules folder, i.e. you just want to run:
+
+```
+mocha \"*/**/*Test.js\"
+```
+
+Then this is possible, but you would have to install dependent binaries glabally (which is bad practice):
+
+```
+npm install -g mocha
+```
+
+
+Sometimes, a locally stored binary needs to be configured, e.g. eslint is one of them. In those case you can do it with npx, e.g.
+
+```
+npx elint --init
+```
+
+there's also other special names, e.g. "pretest" and "posttest", to learn about them, see - https://docs.npmjs.com/cli/v7/using-npm/scripts#npm-test
+
+
+
+## the `npm update` command
+
+
+Here's how to list out all the avialable versions of the 'express' package:
+
+```
+$ npm show express versions
+```
+
+To show what packages will get updated when you run npm-update, do:
+
+```
+$ npm outdated
+```
+
+If you are happy, then do:
+
+```
+npm update
+```
+
+If you want to install a particular version of an app, then do:
+
+```
+npm install express@3.19.2
+```
+or to get the latest, do:
+```
+npm install express@latest
+```
+
+If this version is not on the package.json's ~ or ^ allowed list, then package.json will get updated by the above command. This can be handy if you want to align your local environment with a team member's setup. 
+
+
 
