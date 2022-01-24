@@ -327,3 +327,103 @@ If this version is not on the package.json's ~ or ^ allowed list, then package.j
 
 
 
+
+## Node modules
+
+Earlier we said that a file that contains javascript code is referred to as a module. That's because a required statement like this:
+
+```
+const utils = require('../utils/demo2a')
+
+```
+
+https://github.com/Sher-Chowdhury/node-exports-demo/blob/2ddb91d6a21cedeeb812ba04b2d42682355509cd/demo/demo2.js#L5
+
+will put all the code demo2a.js inside a wrapped function and then execute that function behind the scenes. This wrapper looks like:
+
+```
+function (exports, module, require, __filename, __dirname){
+
+
+  return module.exports  // not sure if this line actually is needed. 
+}
+
+```
+
+That's why we have to set the module.exports at the bottom of the javascript file, as we saw in https://github.com/Sher-Chowdhury/node-exports-demo. 
+
+
+note, this means that if your script has something like `let var = "xxx"` at the top level, then it might appear like a global variable, but in fact it's not global because of this hidden wrapper function. This is only true
+for code run by nodejs. If it's a web browser running javascript code, then it is global. 
+
+
+You can see the above 5 input parameters passed in by nodejs by running:
+
+
+
+
+```
+$ cat npm/args.js
+console.log(arguments)
+$ node npm/args.js
+[Arguments] {
+  '0': {},
+  '1': [Function: require] {
+    resolve: [Function: resolve] { paths: [Function: paths] },
+    main: Module {
+      id: '.',
+      path: '/Users/sherchowdhury/github/node_study_guide/npm',
+      exports: {},
+      filename: '/Users/sherchowdhury/github/node_study_guide/npm/args.js',
+      loaded: false,
+      children: [],
+      paths: [Array]
+    },
+    extensions: [Object: null prototype] {
+      '.js': [Function (anonymous)],
+      '.json': [Function (anonymous)],
+      '.node': [Function (anonymous)]
+    },
+    cache: [Object: null prototype] {
+      '/Users/sherchowdhury/github/node_study_guide/npm/args.js': [Module]
+    }
+  },
+  '2': Module {
+    id: '.',
+    path: '/Users/sherchowdhury/github/node_study_guide/npm',
+    exports: {},
+    filename: '/Users/sherchowdhury/github/node_study_guide/npm/args.js',
+    loaded: false,
+    children: [],
+    paths: [
+      '/Users/sherchowdhury/github/node_study_guide/npm/node_modules',
+      '/Users/sherchowdhury/github/node_study_guide/node_modules',
+      '/Users/sherchowdhury/github/node_modules',
+      '/Users/sherchowdhury/node_modules',
+      '/Users/node_modules',
+      '/node_modules'
+    ]
+  },
+  '3': '/Users/sherchowdhury/github/node_study_guide/npm/args.js',
+  '4': '/Users/sherchowdhury/github/node_study_guide/npm'
+}
+```
+
+## module top level variables. 
+
+Based on the above wrapper function, if you want to make one of your module's variable available to the 
+caller, then you just have to do set them in the export object. 
+
+e.g. in the module, you would have:
+
+```
+exports.pi = '3.141.'
+```
+
+
+```
+const utils = require('../utils/demo2a')
+
+console.log(utils.pi)
+```
+
