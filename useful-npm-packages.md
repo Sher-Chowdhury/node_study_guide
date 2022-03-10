@@ -36,6 +36,8 @@ used for writing unit tests and component tests.
 
 5. chai (for general testing) - gives human readable style of syntax for doing checks during unit and component testing .
 
-6. nock (for component testing) - used for stubbing endpoints for component testing. 
+6. nock (for component testing) - used for stubbing endpoints for component testing. - https://github.com/Sher-Chowdhury/npm-supertest-and-nock-demo
+
+7. supertest - used for triggering express request calls by issuing a dummy request -  https://github.com/Sher-Chowdhury/npm-supertest-and-nock-demo
  
 
