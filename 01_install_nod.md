@@ -8,7 +8,11 @@ brew uninstall node
 
 also run the `rm` commands mentioned in - https://stackoverflow.com/a/11178106
 
+take a backup:
 
+```
+cp ~/.zshrc ~/.zshrc-orig
+```
 
 Basically run the curl command, here:
 
