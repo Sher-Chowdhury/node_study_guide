@@ -3,6 +3,15 @@ Best way to install node is with nvm.
 Uninstall node, if it's already installed:
 
 ```
+npm list -g
+/usr/local/lib
+├── corepack@0.10.0
+├── git-open@2.1.0
+├── n@8.0.2
+├── npm-check-updates@11.8.5
+├── npm@8.5.3
+└── standard@16.0.4
+npm uninstall -g a_module
 brew uninstall node
 ```
 
