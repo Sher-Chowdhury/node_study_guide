@@ -70,6 +70,8 @@ const debug = require('debug')('myApp')
 debug("this only get's printed when debug is enabled")
 ```
 
+Notice the 2 round brackets in succession. That's because the exported item from debug module is a function, that we want to execute straight away. 
+
 on the cli, run:
 
 ```
@@ -82,6 +84,8 @@ This will output a lot of content, including:
 ...
 myApp this only get's printed when debug is enabled
 ```
+
+Here "myApp" is just a tag for us to see which debug messages relates our js file. 
 
 You can apply filtering by running:
 
