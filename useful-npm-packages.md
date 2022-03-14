@@ -46,3 +46,50 @@ nock is only for mocking external requests. It can't be used to mock internal re
 used for mocking internal requests, e.g. app.get()
  
 
+### chalk
+
+[chalk](https://github.com/chalk/chalk) is used for adding color to your console.log() messages. 
+
+e.g. 
+
+```
+const chalk = require('chalk')
+
+console.log("listening on port " + chalk.green('3000'))
+console.log(`listening on port chalk.green('3000')`)
+```
+
+
+### Debug
+
+[debug](https://www.npmjs.com/package/debug) let's you add console.log() statements that only get's executed when the "DEBUG" env variable is set. 
+
+
+```
+const debug = require('debug')('myApp')
+debug("this only get's printed when debug is enabled")
+```
+
+on the cli, run:
+
+```
+node DEBUG=* npm start
+```
+
+This will output a lot of content, including:
+
+```
+...
+myApp this only get's printed when debug is enabled
+```
+
+You can apply filtering by running:
+
+```
+node DEBUG=* npm start
+```
+
+
+### morgan
+
+[morgan]()
