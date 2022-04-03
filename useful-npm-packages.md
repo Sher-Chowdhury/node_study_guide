@@ -128,4 +128,6 @@ https://eslint.org/ - https://www.npmjs.com/package/eslint
 
 The main difference between the 2 is that standard is very opinionated and can't be modified, whereas eslint can be modified. 
 
+These should be dev-dependency packages. 
+
 
