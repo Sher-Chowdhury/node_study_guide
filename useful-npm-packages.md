@@ -118,3 +118,14 @@ https://www.npmjs.com/package/webpack-cli
 ### Babel
 
 used in React based apps. It converts jsx syntax into javascript code. https://babeljs.io
+
+### eslint and standard
+
+Both of these packages appears to do the same kind of thing, i.e. fix lint problems.
+
+https://standardjs.com/ - https://www.npmjs.com/package/standard
+https://eslint.org/ - https://www.npmjs.com/package/eslint
+
+The main difference between the 2 is that standard is very opinionated and can't be modified, whereas eslint can be modified. 
+
+
