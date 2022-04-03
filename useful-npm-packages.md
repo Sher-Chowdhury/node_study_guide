@@ -102,3 +102,19 @@ node DEBUG=* npm start
 ### nodemon
 
 can be useful when doing development work. It can restart `npm start` whenever there's a change in the javascript files. I personally don't use this though. 
+
+### webpack and webpack-cli
+
+This is often used for working with React based apps. Web browsers can't understand js packages that's spread across multiple .js files. So this tool rewrites all the js code into a single .js files. That includes all the code from dependency packages. 
+
+https://jscomplete.com/learn/1rd-reactful
+
+
+https://webpack.js.org/ - https://www.npmjs.com/package/webpack
+
+https://www.npmjs.com/package/webpack-cli
+
+
+### Babel
+
+used in React based apps. It converts jsx syntax into javascript code. https://babeljs.io
