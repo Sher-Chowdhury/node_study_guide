@@ -130,4 +130,6 @@ The main difference between the 2 is that standard is very opinionated and can't
 
 These should be dev-dependency packages. 
 
+There is also - https://www.npmjs.com/package/prettier that can work well with eslint. 
+
 
